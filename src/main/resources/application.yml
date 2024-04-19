@@ -1,0 +1,36 @@
+server:
+  port: 9999
+
+spring:
+  datasource:
+    url: jdbc:mysql://{server}:{port}/distribute?useSSL=false&autoReconnect=true&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: password
+    initial-size: 20
+    max-idle: 60
+    max-wait: 10000
+    min-idle: 10
+    max-active: 200
+  jpa:
+    generate-ddl: true
+    show-sql: false
+    properties:
+      hibernate:
+        ddl-auto:
+          auto: update
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+        use-new-id-generator-mappings: false
+  data:
+    redis:
+      database: 2
+      host: { server }
+      port: { port }
+      lettuce:
+        pool:
+          min-idle: 0
+          max-active: 8
+          max-idle: 8
+          max-wait: -1ms
+        connect-timeout: 30000ms
