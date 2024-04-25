@@ -2,11 +2,12 @@ package com.cclucky.distribute.entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "db_product", schema = "distribute")
-public class ProductEntity {
+public class ProductEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

@@ -1,10 +1,11 @@
 package com.cclucky.distribute.entity;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "db_order", schema = "distribute")
-public class OrderEntity {
+public class OrderEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
